@@ -6,6 +6,20 @@
 #include <cmath>
 
 
+// @Summary: 这段代码实现了一些数学函数，主要用于根据多项式计算方程的根。包括：
+
+/*
+solveCub：求解三次方程的根。
+solveQuartMonic：求解四次单项式方程的根。
+polyEval：计算多项式在某个点处的值。
+polyDeri：计算多项式的导数。
+shrinkInterval：使用牛顿迭代法在给定区间内找到多项式的一个根。
+这些函数都被封装在命名空间 ruckig::roots 中。这些函数可以用于多种应用，例如在机器人控制中计算运动规划中的时间或速度等。
+*/
+
+
+
+
 namespace ruckig {
 
 template<typename T>
@@ -57,6 +71,19 @@ public:
 
 
 //! Calculate all roots of a*x^3 + b*x^2 + c*x + d = 0
+
+// @Study: 一元二次方程有0,1,2个实根（想想曲线）
+// @Study: 一元3次方程，最多有3个实根，至少有1个实根
+
+/**
+
+Just as a quadratic equation may have two real roots, so a cubic equation has possibly three.
+But unlike a quadratic equation which may have no real solution, a cubic equation always has at
+least one real root. We will see why this is the case later. If a cubic does have three roots, two
+or even all three of them may be repeated. This gives us four possibilities which are illustrated
+in the following examples.
+
+*/
 inline PositiveSet<double, 3> solveCub(double a, double b, double c, double d) {
     PositiveSet<double, 3> roots;
 
@@ -69,9 +96,13 @@ inline PositiveSet<double, 3> solveCub(double a, double b, double c, double d) {
         c = b;
         b = a;
         a = 0.0;
+        //   a*x^3 +   b*x^2 +   c*x +  d = 0
+        //  归一化到下面这种情况
+        // (0)*x^3 + (a)*x^2 + (b)*x + (c) = 0
     }
 
     if (std::abs(a) < DBL_EPSILON) {
+        // 一元二次方程
         if (std::abs(b) < DBL_EPSILON) {
             // Linear equation
             if (std::abs(c) > DBL_EPSILON) {
