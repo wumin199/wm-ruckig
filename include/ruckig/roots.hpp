@@ -83,6 +83,10 @@ least one real root. We will see why this is the case later. If a cubic does hav
 or even all three of them may be repeated. This gives us four possibilities which are illustrated
 in the following examples.
 
+ref: 
+http://www.mathcentre.ac.uk/resources/uploaded/mc-ty-cubicequations-2009-1.pdf
+https://zh.wikihow.com/%E8%A7%A3%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B
+
 */
 inline PositiveSet<double, 3> solveCub(double a, double b, double c, double d) {
     PositiveSet<double, 3> roots;
