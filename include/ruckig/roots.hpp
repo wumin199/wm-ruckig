@@ -125,6 +125,10 @@ inline PositiveSet<double, 3> solveCub(double a, double b, double c, double d) {
         }
 
     } else {
+        //@Study: 卡尔达诺公式求解一元三次方程
+        // ref: 
+        // https://zhuanlan.zhihu.com/p/413348034
+        // https://zhuanlan.zhihu.com/p/413976771
         // Cubic equation
         const double inva = 1.0 / a;
         const double invaa = inva * inva;
@@ -132,13 +136,14 @@ inline PositiveSet<double, 3> solveCub(double a, double b, double c, double d) {
         const double bover3a = b * inva / 3;
         const double p = (a * c - bb / 3) * invaa;
         const double halfq = (2 * bb * b - 9 * a * b * c + 27 * a * a * d) / 54 * invaa * inva;
-        const double yy = p * p * p / 27 + halfq * halfq;
+        const double yy = p * p * p / 27 + halfq * halfq; // @study: yy = delta
 
         constexpr double cos120 = -0.50;
         constexpr double sin120 = 0.866025403784438646764;
 
         if (yy > DBL_EPSILON) {
             // Sqrt is positive: one real solution
+            // @Study: Δ > 0, 一元三次方程有一个实数解
             const double y = std::sqrt(yy);
             const double uuu = -halfq + y;
             const double vvv = -halfq - y;
@@ -147,6 +152,8 @@ inline PositiveSet<double, 3> solveCub(double a, double b, double c, double d) {
             roots.insert(w - p / (3 * w) - bover3a);
         } else if (yy < -DBL_EPSILON) {
             // Sqrt is negative: three real solutions
+            // @Study: Δ < 0, 一元三次方程有3个实数解
+            // 
             const double x = -halfq;
             const double y = std::sqrt(-yy);
             double theta;
@@ -173,6 +180,7 @@ inline PositiveSet<double, 3> solveCub(double a, double b, double c, double d) {
             roots.insert(ux * cos120 + uyi * sin120 - bover3a);
         } else {
             // Sqrt is zero: two real solutions
+            // @Study: Δ == 0, 一元三次方程有2个实数解
             const double www = -halfq;
             const double w = 2 * std::cbrt(www);
 
