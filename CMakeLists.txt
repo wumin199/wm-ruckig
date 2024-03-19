@@ -8,7 +8,7 @@ include(GNUInstallDirs)
 
 
 option(BUILD_EXAMPLES "Build example programs" ON)
-option(BUILD_PYTHON_MODULE "Build python module with pybind11" OFF)
+option(BUILD_PYTHON_MODULE "Build python module with pybind11" ON)
 option(BUILD_CLOUD_CLIENT "Build cloud client to calculate Ruckig Pro trajectories remotely" ON)
 option(BUILD_TESTS "Build tests" ON)
 option(BUILD_BENCHMARK "Build benchmark" OFF)
@@ -72,13 +72,13 @@ if(BUILD_EXAMPLES)
   endforeach()
 endif()
 
-
 if(BUILD_PYTHON_MODULE)
   # Check if pybind11 exists as a subdirectory
   if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/pybind11)
     add_subdirectory(pybind11)
   else()
-    find_package(pybind11 2.6 REQUIRED)
+    find_package(pybind11 REQUIRED)
+    message(STATUS "Found pybind11: ${pybind11_DIR}")
   endif()
 
   pybind11_add_module(python_ruckig src/ruckig/python.cpp)
@@ -91,6 +91,7 @@ if(BUILD_PYTHON_MODULE)
   set_target_properties(python_ruckig PROPERTIES OUTPUT_NAME ruckig)
   set_target_properties(python_ruckig PROPERTIES ARCHIVE_OUTPUT_NAME python_ruckig)
 
+  message(STATUS "Current binary dir: ${CMAKE_CURRENT_BINARY_DIR}")
   install(TARGETS python_ruckig LIBRARY DESTINATION .)
 endif()
 

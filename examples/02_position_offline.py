@@ -1,3 +1,13 @@
+import sys
+import os
+
+# RUCKIG_ROOT = os.path.dirname(os.path.dirname(__file__))
+# RUCKIG_PYTHONPATH = os.path.join(RUCKIG_ROOT, "build")
+# if os.path.exists(RUCKIG_PYTHONPATH):
+#     sys.path.insert(0, RUCKIG_PYTHONPATH)
+# print("RUCKIG_PYTHONPATH: ", RUCKIG_PYTHONPATH)
+# from ruckig import InputParameter, Ruckig, Trajectory, Result
+import ruckig_abc
 from ruckig import InputParameter, Ruckig, Trajectory, Result
 
 
