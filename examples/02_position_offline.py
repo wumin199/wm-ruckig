@@ -1,13 +1,15 @@
 import sys
 import os
 
+# @TODO: fix
 # RUCKIG_ROOT = os.path.dirname(os.path.dirname(__file__))
 # RUCKIG_PYTHONPATH = os.path.join(RUCKIG_ROOT, "build")
 # if os.path.exists(RUCKIG_PYTHONPATH):
 #     sys.path.insert(0, RUCKIG_PYTHONPATH)
 # print("RUCKIG_PYTHONPATH: ", RUCKIG_PYTHONPATH)
 # from ruckig import InputParameter, Ruckig, Trajectory, Result
-import ruckig_abc
+
+# C:/vcpkg/installed/x64-windows/tools/python3/pip.exe install vcpkg
 from ruckig import InputParameter, Ruckig, Trajectory, Result
 
 

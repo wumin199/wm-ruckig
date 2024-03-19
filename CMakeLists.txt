@@ -87,7 +87,7 @@ if(BUILD_PYTHON_MODULE)
   if(BUILD_CLOUD_CLIENT)
     target_compile_definitions(python_ruckig PUBLIC WITH_CLOUD_CLIENT)
   endif()
-
+  
   set_target_properties(python_ruckig PROPERTIES OUTPUT_NAME ruckig)
   set_target_properties(python_ruckig PROPERTIES ARCHIVE_OUTPUT_NAME python_ruckig)
 
