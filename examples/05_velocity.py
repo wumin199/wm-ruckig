@@ -41,8 +41,8 @@ if __name__ == '__main__':
     print(f'Trajectory duration: {first_output.trajectory.duration:0.4f} [s]')
 
     # Plot the trajectory
-    # from pathlib import Path
-    # from plotter import Plotter
+    from pathlib import Path
+    from plotter import Plotter
 
-    # project_path = Path(__file__).parent.parent.absolute()
-    # Plotter.plot_trajectory(project_path / 'examples' / '05_trajectory.pdf', otg, inp, out_list, plot_jerk=False)
+    project_path = Path(__file__).parent.parent.absolute()
+    Plotter.plot_trajectory(project_path / 'examples' / '05_velocity.pdf', otg, inp, out_list, plot_jerk=True)

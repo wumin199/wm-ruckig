@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
         print('\t'.join([f'{out.time:0.3f}'] + [f'{p:0.3f}' for p in out.new_position]))
         out_list.append(copy(out))
-        time_offsets.append(1.0 if on_stop_trajectory else 0.0)
+        time_offsets.append(1.0 if on_stop_trajectory else 0.0) # 1s后开始停止，之前的time_offsets都是0
 
         # Activate stop trajectory after 1s
         if out.time >= 1.0 and not on_stop_trajectory:
@@ -55,8 +55,8 @@ if __name__ == '__main__':
     print(f'Trajectory duration: {first_output.trajectory.duration:0.4f} [s]')
 
     # Plot the trajectory
-    # from pathlib import Path
-    # from plotter import Plotter
+    from pathlib import Path
+    from plotter import Plotter
 
-    # project_path = Path(__file__).parent.parent.absolute()
-    # Plotter.plot_trajectory(project_path / 'examples' / '06_trajectory.pdf', otg, inp, out_list, plot_jerk=False, time_offsets=time_offsets)
+    project_path = Path(__file__).parent.parent.absolute()
+    Plotter.plot_trajectory(project_path / 'examples' / '06_stop.pdf', otg, inp, out_list, plot_jerk=False, time_offsets=time_offsets)

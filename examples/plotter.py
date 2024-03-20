@@ -16,7 +16,7 @@ class Plotter:
         show:
         plot_acceleration:
         plot_jerk:
-        time_offsets:
+        time_offsets: []
         title:
         """
         print("---")

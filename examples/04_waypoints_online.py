@@ -30,6 +30,7 @@ if __name__ == '__main__':
     inp.max_acceleration = [3, 2, 2]
     inp.max_jerk = [6, 10, 20]
 
+    # Setting interrupt_calculation_duration makes sure to be real-time capable by refining the solution in the next control invocation.
     inp.interrupt_calculation_duration = 500  # [µs]
 
     print('\t'.join(['t'] + [str(i) for i in range(otg.degrees_of_freedom)]))
