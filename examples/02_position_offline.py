@@ -51,4 +51,4 @@ if __name__ == '__main__':
     print(f'Position at time {new_time:0.4f} [s]: {new_position}')
 
     # Get some info about the position extrema of the trajectory
-    print(f'Position extremas are {trajectory.position_extrema}')
+    print(f'Position extremas are {trajectory.position_extrema}') # [min, max]
